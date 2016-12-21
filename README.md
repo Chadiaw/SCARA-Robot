@@ -2,7 +2,7 @@
 This is an API for controlling a SCARA-type (3 degrees of freedom : RTR) robot arm using a raspberry pi and multiple servos.
 
 # Dependencies
-- Adafruit PCA9685 : The shield provides multiple PWM channels and a python library to control them. https://github.com/adafruit/Adafruit_Python_PCA9685
+- Adafruit PCA9685 : The shield provides multiple PWM channels and a python library to control them (used for servo control). https://github.com/adafruit/Adafruit_Python_PCA9685
 
 - Scipy: This python library is mostly used for line interpolation and must be installed on the RPi in order to draw lines with the robot. 
 https://www.scipy.org/install.html
