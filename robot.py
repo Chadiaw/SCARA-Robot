@@ -209,9 +209,9 @@ class Robot:
             delay = abs(self._h - self._last_h)  # delay proportionnal to the height change
             time.sleep(delay)
 
-        self.is_at_set_point = self.move_base(self._base_angle)
+        self.is_at_set_point = self.move_base(self._base_angle) and self.is_at_set_point
         # time.sleep(0.1)
-        self.is_at_set_point = self.move_arm(self._arm_angle)
+        self.is_at_set_point = self.move_arm(self._arm_angle) and self.is_at_set_point
         # time.sleep(0.1)
 
     def follow_path(self, path):
@@ -286,20 +286,16 @@ class Robot:
                 self.go_to_coordinates(pos_x, pos_y, stop_point.z)
                 if pos_x < stop_x:
                     pos_x += self.LINE_INCREMENT
-                    if isclose(pos_x, stop_x):
-                        self.go_to_coordinates(stop_x, stop_y, stop_point.z)  # end of line
-                        if self.debug:
-                            print(" End of line. Robot is at (", pos_x, ", ", pos_y, ")")
-                        break
-                    pos_y = f(pos_x)
                 elif pos_x > stop_x:
                     pos_x -= self.LINE_INCREMENT
-                    if isclose(pos_x, stop_x):
+                
+                if isclose(pos_x, stop_x):
                         self.go_to_coordinates(stop_x, stop_y, stop_point.z)  # end of line
                         if self.debug:
                             print(" End of line. Robot is at (", pos_x, ", ", pos_y, ")")
                         break
                     pos_y = f(pos_x)
+                
                 if self.debug:
                     print("Going to (", pos_x, ", ", pos_y, ")")
         else:
