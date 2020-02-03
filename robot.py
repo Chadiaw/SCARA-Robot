@@ -290,10 +290,10 @@ class Robot:
                     pos_x -= self.LINE_INCREMENT
                 
                 if isclose(pos_x, stop_x):
-                        self.go_to_coordinates(stop_x, stop_y, stop_point.z)  # end of line
-                        if self.debug:
-                            print(" End of line. Robot is at (", pos_x, ", ", pos_y, ")")
-                        break
+                    self.go_to_coordinates(stop_x, stop_y, stop_point.z)  # end of line
+                    if self.debug:
+                        print(" End of line. Robot is at (", pos_x, ", ", pos_y, ")")
+                    break
                     pos_y = f(pos_x)
                 
                 if self.debug:
